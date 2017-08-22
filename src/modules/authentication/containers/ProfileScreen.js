@@ -51,6 +51,7 @@ export class ProfileScreen extends Component {
           <View style={Styles.inputTextsContainer}>
             <TextInput
               placeholder='Your name'
+              value={this.props.profile.name}
               onChangeText={(name) => { this.setState({name}) }} />
           </View>
           <RkChoiceGroup
@@ -62,6 +63,7 @@ export class ProfileScreen extends Component {
           <View style={Styles.inputTextsContainer}>
             <TextInput
               placeholder='Number'
+              value={this.props.profile.contact.value}
               onChangeText={(number) => { this.setState({number}) }} />
           </View>
         </View>

@@ -61,3 +61,20 @@ export const saveProfile = (profile) => {
       })
   })
 }
+
+export const getProfile = () => {
+  var currentUser = Firebase.auth().currentUser
+
+  return new Promise((resolve, reject) => {
+    Firebase
+      .database()
+      .ref(`profiles/${currentUser.uid}`)
+      .once('value')
+      .then(profile => {
+        resolve(profile.val())
+      })
+      .catch(error => {
+        reject(error)
+      })
+  })
+}

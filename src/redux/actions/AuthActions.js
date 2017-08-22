@@ -1,13 +1,14 @@
 import { SIGN_IN_FIREBASE, SAVE_PROFILE_FIREBASE, SIGN_UP_SUCCESS, SIGN_UP_FAILED } from '../types'
-import { signIn, signUp, saveProfile } from '../../services/firebase'
+import { signIn, signUp, saveProfile, getProfile } from '../../services/firebase'
 
 export function signInFirebase (email, password) {
   return async (dispatch) => {
     try {
       const user = await signIn(email, password)
+      const profile = await getProfile()
       const action = {
         type: SIGN_IN_FIREBASE,
-        payload: user
+        payload: {user, profile}
       }
       dispatch(action)
     } catch (error) {
